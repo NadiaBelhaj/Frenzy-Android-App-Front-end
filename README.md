@@ -3,4 +3,4 @@ Matchmaking application between Gamers. This application is dedicated to video g
 
 Demo : https://youtu.be/kj9I28Zed84
 
-Back-end Link :
+Back-end Link : https://github.com/NadiaBelhaj/Frenzy-Android-App-Back-end
