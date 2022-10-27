@@ -19,16 +19,16 @@ class NotificationAdapter : PagingDataAdapter<Notification, NotificationAdapter.
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NotificationViewHolder {
         val inflater: LayoutInflater = LayoutInflater.from(parent.context)
-        val binding = NotificationListItemBinding.inflate(inflater, parent, false)
+        
         return NotificationViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: NotificationViewHolder, position: Int) {
         val currentNotification = getItem(position) ?: return
-        holder.bingNotification(currentNotification)
+      )
         if(::onItemClickListener.isInitialized){
             holder.itemView.setOnClickListener {
-                onItemClickListener(currentNotification)
+                onItemClickListener()
             }
         }
     }
@@ -40,13 +40,12 @@ class NotificationAdapter : PagingDataAdapter<Notification, NotificationAdapter.
     class NotificationViewHolder(val binding : NotificationListItemBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun bingNotification(notification: Notification) {
-            binding.notificationBody.text = notification.body
+            
             binding.notificationDate.setFormattedDateForPost(notification.createdDate)
 
             when(notification.action){
                 Action.QUESTION -> binding.notificationIcon.setImageResource(R.drawable.ic_questions)
-                Action.ANSWER -> binding.notificationIcon.setImageResource(R.drawable.ic_answers)
-                Action.FOLLOW -> binding.notificationIcon.setImageResource(R.drawable.ic_followers)
+                
             }
 
             if(notification.isOpened == Open.UN_OPENED){

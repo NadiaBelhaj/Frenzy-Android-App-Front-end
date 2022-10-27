@@ -67,13 +67,12 @@ class AnswerQuestionFragment : Fragment() {
 
     private fun setupObservers() {
         viewModel.getQuestionLiveData().observe(viewLifecycleOwner, {
-            bindQuestionInformation(it)
+           
             mQuestion = it
         })
 
         viewModel.getAnswerLiveData().observe(viewLifecycleOwner, {
             when(it){
-                ResponseType.SUCCESS ->  findNavController().navigateUp()
                 ResponseType.FAILURE -> Toast.makeText(context, "Invalid Answer Request", Toast.LENGTH_SHORT).show()
                 else -> Toast.makeText(context, "Invalid Answer Request", Toast.LENGTH_SHORT).show()
             }

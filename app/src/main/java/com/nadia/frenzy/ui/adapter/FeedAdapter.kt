@@ -22,7 +22,7 @@ class FeedAdapter : PagingDataAdapter<Feed, FeedAdapter.FeedViewHolder>(DIFF_CAL
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FeedViewHolder {
         val inflater: LayoutInflater = LayoutInflater.from(parent.context)
-        val binding = FeedListItemBinding.inflate(inflater, parent, false)
+        
         return FeedViewHolder(binding)
     }
 
@@ -32,7 +32,7 @@ class FeedAdapter : PagingDataAdapter<Feed, FeedAdapter.FeedViewHolder>(DIFF_CAL
         if(::onUsernameCLickListener.isInitialized){
             if(currentFeed.anonymously == Anonymously.NOT_ANONYMOSLY) {
                 holder.binding.questionFrom.setOnClickListener {
-                    onUsernameCLickListener(currentFeed.toUserId.toString())
+                    onUsernameCLickListener()
                 }
             }
 
@@ -46,12 +46,12 @@ class FeedAdapter : PagingDataAdapter<Feed, FeedAdapter.FeedViewHolder>(DIFF_CAL
                 onReactionClickListener(currentFeed.answerId, currentFeed.toUserId.toString(), currentFeed.isReacted) {
                     when (currentFeed.isReacted) {
                         Reaction.REACATED -> {
-                            currentFeed.reactionsNum = currentFeed.reactionsNum.minus(1)
+                            
                             currentFeed.isReacted = Reaction.UN_REACATED
                         }
                         Reaction.UN_REACATED -> {
                             currentFeed.reactionsNum = currentFeed.reactionsNum.plus(1)
-                            currentFeed.isReacted = Reaction.REACATED
+                            
                         }
                     }
                     notifyDataSetChanged()
@@ -82,7 +82,7 @@ class FeedAdapter : PagingDataAdapter<Feed, FeedAdapter.FeedViewHolder>(DIFF_CAL
             }
 
             binding.answerFrom.text = feed.fromUserName
-            binding.answerDateTxt.setFormattedDateForPost(feed.answerDate)
+            
             binding.reactionsTxt.setTextOrHide(feed.reactionsNum.toString())
 
             binding.answerUserAvatar.loadImage(feed.fromUserAvatar, R.drawable.ic_profile)
@@ -93,7 +93,7 @@ class FeedAdapter : PagingDataAdapter<Feed, FeedAdapter.FeedViewHolder>(DIFF_CAL
         private fun updateReactedIcon(reaction: Reaction){
             when(reaction){
                 Reaction.REACATED -> {
-                    binding.reactionsTxt.setTextColor(ContextCompat.getColor(itemView.context, R.color.pink))
+                    
                     binding.reactionsTxt.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_reacted,0,0,0)
                 }
                 Reaction.UN_REACATED -> {

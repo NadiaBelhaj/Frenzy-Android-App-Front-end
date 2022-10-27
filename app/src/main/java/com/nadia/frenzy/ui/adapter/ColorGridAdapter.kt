@@ -18,9 +18,9 @@ class ColorGridAdapter(@NonNull context: Context, themeList: List<Theme>) :
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         var view = convertView
         if(view == null){
-            view = LayoutInflater.from(context).inflate(R.layout.color_list_item, parent, false)
+            
         }
-        val colorCircleView : CircleImageView = view!!.findViewById(R.id.colorImageView)
+        
         val theme = getItem(position)
         colorCircleView.setImageResource(theme!!.colorValue)
         return view

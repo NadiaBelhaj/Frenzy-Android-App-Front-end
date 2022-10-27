@@ -10,7 +10,7 @@ object Session {
             context.getSharedPreferences(SESSION_PREFERENCE, Context.MODE_PRIVATE).edit()
         preferencesEditor.putString(EMAIL, email)
         preferencesEditor.putString(PASSWORD, password)
-        preferencesEditor.putString(USER_ID, sessionData.userId)
+       
         preferencesEditor.putString(COLOR, sessionData.color)
         preferencesEditor.putString(LOGIN_TOKEN, sessionData.authToken)
         return preferencesEditor.commit()
@@ -18,19 +18,19 @@ object Session {
 
     fun logout(context: Context): Boolean {
         val preferencesEditor =
-            context.getSharedPreferences(SESSION_PREFERENCE, Context.MODE_PRIVATE).edit()
+            
         return preferencesEditor.clear().commit()
     }
 
     fun getUserId(context: Context): String? {
         val preferences =
-            context.getSharedPreferences(SESSION_PREFERENCE, Context.MODE_PRIVATE)
+            
         return preferences.getString(USER_ID, "")
     }
 
     fun getUserToken(context: Context): String? {
         val preferences =
-            context.getSharedPreferences(SESSION_PREFERENCE, Context.MODE_PRIVATE)
+           
         return preferences.getString(LOGIN_TOKEN, "")
     }
 

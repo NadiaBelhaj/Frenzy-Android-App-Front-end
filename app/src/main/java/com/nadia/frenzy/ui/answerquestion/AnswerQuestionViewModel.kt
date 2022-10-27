@@ -34,9 +34,9 @@ class AnswerQuestionViewModel @Inject constructor(
         viewModelScope.launch {
             val result = answerRepository.answerOneQuestion(token, answerData)
             if (result.isSuccess) {
-                val response = result.getOrNull()
+                
                 when(response?.code()){
-                    200 -> answerLiveData.postValue(ResponseType.SUCCESS)
+                   
                     401 -> answerLiveData.postValue(ResponseType.NO_AUTH)
                     else -> answerLiveData.postValue(ResponseType.FAILURE)
                 }

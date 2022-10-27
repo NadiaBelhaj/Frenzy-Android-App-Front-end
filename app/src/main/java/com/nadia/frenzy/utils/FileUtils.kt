@@ -11,10 +11,10 @@ object FileUtils {
         val projection = arrayOf(MediaStore.Images.Media.DATA)
 
         val cursor =
-            context.contentResolver.query(uri!!, projection, null, null, null)
+           
         if (cursor != null) {
             if (cursor.moveToFirst()) {
-                val columnIndex = cursor.getColumnIndexOrThrow(projection[0])
+                
                 result = cursor.getString(columnIndex)
             }
             cursor.close()
@@ -26,6 +26,6 @@ object FileUtils {
     }
 
     fun getFileType(context: Context, uri : Uri) : String{
-        return context.contentResolver.getType(uri).toString()
+        return context.contentResolver
     }
 }

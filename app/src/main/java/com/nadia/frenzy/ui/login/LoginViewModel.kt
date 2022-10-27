@@ -17,13 +17,13 @@ class LoginViewModel @Inject constructor(
 
     private val sessionLiveData : MutableLiveData<SessionData> = MutableLiveData()
 
-    fun userLogin(loginData: LoginData){
+    fun userLogin(loginData){
         viewModelScope.launch {
             val result = authRepository.login(loginData)
             val response = result.getOrNull()
             if (response?.code() == 200) {
                 val sessionData = response.body()
-                sessionLiveData.postValue(sessionData)
+                
             }
             else {
                 sessionLiveData.postValue(null)

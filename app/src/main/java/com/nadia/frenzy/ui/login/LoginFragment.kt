@@ -50,7 +50,7 @@ class LoginFragment : Fragment() {
 
                 mainViewModel.updateNavigationButtonVisibility(View.VISIBLE)
 
-                findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
+                
             } else {
                 Toast.makeText(requireContext(), "Invalid Login", Toast.LENGTH_SHORT).show()
             }
@@ -82,7 +82,7 @@ class LoginFragment : Fragment() {
             return
         }
 
-        viewModel.userLogin(loginData)
+        
         binding.loadingBar.show()
     }
 

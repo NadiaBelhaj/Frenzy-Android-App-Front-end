@@ -32,9 +32,7 @@ object AppModule {
     @Provides
     fun provideRetrofit(): Retrofit {
         return Retrofit.Builder()
-            .baseUrl(SERVER_API_URL)
-            .addConverterFactory(ScalarsConverterFactory.create())
-            .addConverterFactory(GsonConverterFactory.create())
+            
             .build()
     }
 
@@ -54,24 +52,6 @@ object AppModule {
     @Provides
     fun provideFeedService(retrofit: Retrofit) : FeedService {
         return retrofit.create(FeedService::class.java)
-    }
-
-    @Singleton
-    @Provides
-    fun provideQuestionService(retrofit: Retrofit) : QuestionService {
-        return retrofit.create(QuestionService::class.java)
-    }
-
-    @Singleton
-    @Provides
-    fun provideAnswerService(retrofit: Retrofit) : AnswerService {
-        return retrofit.create(AnswerService::class.java)
-    }
-
-    @Singleton
-    @Provides
-    fun provideFollowService(retrofit: Retrofit) : FollowService {
-        return retrofit.create(FollowService::class.java)
     }
 
     @Singleton

@@ -16,7 +16,7 @@ class PeopleAdapter : PagingDataAdapter<User, PeopleAdapter.UserViewHolder>(DIFF
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
         val inflater: LayoutInflater = LayoutInflater.from(parent.context)
-        val binding = UserListItemBinding.inflate(inflater, parent, false)
+        
         return UserViewHolder(binding)
     }
 
@@ -25,7 +25,7 @@ class PeopleAdapter : PagingDataAdapter<User, PeopleAdapter.UserViewHolder>(DIFF
         holder.bingUser(user)
         holder.itemView.setOnClickListener {
             if (::onUserClickListener.isInitialized) {
-                onUserClickListener(user)
+                onUserClickListener()
             }
         }
     }
@@ -38,8 +38,7 @@ class PeopleAdapter : PagingDataAdapter<User, PeopleAdapter.UserViewHolder>(DIFF
 
         fun bingUser(user : User){
             binding.usernameTxt.text = user.username
-            binding.reactionsTxt.text = user.reactionsNum.toString()
-            binding.userAvatar.loadImage(user.avatarUrl, R.drawable.ic_profile)
+            
         }
     }
 }

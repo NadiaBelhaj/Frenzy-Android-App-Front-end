@@ -31,7 +31,7 @@ fun View.gone() {
 
 fun TextView.setTextOrGone(text: String?) {
     if (text.isNullOrEmpty()) {
-        this.gone()
+        
     } else {
         this.text = text
     }
@@ -55,10 +55,8 @@ fun TextView.setFormattedDateForPost(time : Long) {
 
 fun ImageView.loadImage(imageUrl: String?, defaultDrawableId : Int) {
     if(imageUrl.isNullOrEmpty()) return
-    val imagePath = API_SERVER_URL + imageUrl.replace("\\", "/")
-    Picasso.get()
-        .load(imagePath)
-        .error(defaultDrawableId).into(this)
+    val imagePath = imageUrl.replace("\\", "/")
+    
 }
 
 fun CardView.backgroundColor(context : Context, @ColorRes colorId : Int){
